@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Vue de formulaire pour saisir le feedback -->
+        <record id="view_customer_feedback_form" model="ir.ui.view">
+            <field name="name">customer.feedback.form</field>
+            <field name="model">customer.feedback</field>
+            <field name="arch" type="xml">
+                <form string="Customer Feedback">
+                    <sheet>
+                        <group>
+                            <field name="customer_name"/>
+                            <field name="date"/>
+                            <field name="invoice_reference"/>
+                            <field name="product_id"/>
+                            <field name="communication_method"/>
+                            <field name="feedback"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vue de liste pour afficher tous les feedbacks -->
+        <record id="view_customer_feedback_tree" model="ir.ui.view">
+            <field name="name">customer.feedback.tree</field>
+            <field name="model">customer.feedback</field>
+            <field name="arch" type="xml">
+                <tree string="Customer Feedbacks">
+                    <field name="customer_name"/>
+                    <field name="date"/>
+                    <field name="invoice_reference"/>
+                    <field name="product_id"/>
+                    <field name="communication_method"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action pour ouvrir la vue de liste -->
+        <record id="action_customer_feedback_tree" model="ir.actions.act_window">
+            <field name="name">Customer Feedbacks</field>
+            <field name="res_model">customer.feedback</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menu pour accéder à la vue de liste -->
+        <menuitem id="menu_customer_feedback" name="Customer Feedbacks" sequence="30"/>
+        <menuitem id="menu_customer_feedback_list" name="Feedbacks List" parent="menu_customer_feedback" action="action_customer_feedback_tree"/>
+    </data>
+</odoo>
